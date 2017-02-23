@@ -39,7 +39,7 @@ const  getTimeline = (params, cb, acc = []) => {
   }).catch(err => console.log(err));
 };
 
-const  writeTweetsToFIle = (data) => {
+const  writeTweetsToFile = (data) => {
   const name = data[0].user.screen_name;
   const separator = '\n==============================================\n';
   const tweets = data.map(tweet => `${tweet.created_at}\n\n${tweet.text.trim()}`).join(separator);
@@ -51,4 +51,4 @@ const  writeTweetsToFIle = (data) => {
   fs.writeFileSync( `./tweets/${name}.txt`, tweets);
 };
 
-getTimeline(initialParams, writeTweetsToFIle);
+getTimeline(initialParams, writeTweetsToFile);
