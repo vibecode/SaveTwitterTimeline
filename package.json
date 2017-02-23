@@ -1,0 +1,29 @@
+{
+  "name": "savetwittertimeline",
+  "version": "1.0.0",
+  "description": "Script for downloading specified user timeline and saving it to a text file.",
+  "main": "saveTimeline.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vibecode/SaveTwitterTimeline.git"
+  },
+  "keywords": [
+    "twitter",
+    "timeline",
+    "tweets",
+    "download"
+  ],
+  "author": "Stanislav O.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vibecode/SaveTwitterTimeline/issues"
+  },
+  "homepage": "https://github.com/vibecode/SaveTwitterTimeline#readme",
+  "dependencies": {
+    "long": "^3.2.0",
+    "twit": "^2.2.5"
+  }
+}
