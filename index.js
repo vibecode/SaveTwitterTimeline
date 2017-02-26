@@ -1,16 +1,18 @@
 const Twit = require('twit');
 const Long = require('long');
 const fs = require('fs');
+const Progress = require('ts-progress');
 
 const authConfig = {
   consumer_key: '...',
   consumer_secret: '...',
   access_token: '...',
   access_token_secret: '...',
+  timeout_ms: 60 * 1000
 };
 
 const initialParams = {
-  screen_name: 'twocyana',
+  screen_name: '...',
   include_rts: true,
   exclude_replies: false,
   count: 200
@@ -18,12 +20,18 @@ const initialParams = {
 
 const tw = new Twit(authConfig);
 
+const progress = Progress.create({
+  total: 10,
+  textColor: 'red',
+  pattern: 'Downloading: {bar.white.red.30}'
+});
+
 const getTimeline = (params, cb, acc = []) => {
   return tw.get('statuses/user_timeline/', params, (err, data) => {
     if (err) {
       throw err;
     }
-
+    progress.update();
     acc = [...acc, ...data];
 
     if (data.length) {
@@ -34,6 +42,7 @@ const getTimeline = (params, cb, acc = []) => {
 
       return getTimeline(newParams, cb, acc);
     } else {
+      progress.done();
       cb(acc);
     }
   }).catch(err => console.log(err));
@@ -49,6 +58,7 @@ const writeTweetsToFile = (data) => {
   }
 
   fs.writeFileSync(`./tweets/${name}.txt`, tweets);
+  console.log(`All available tweets saved to ${name}.txt`);
 };
 
 getTimeline(initialParams, writeTweetsToFile);

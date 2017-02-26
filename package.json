@@ -24,6 +24,7 @@
   "homepage": "https://github.com/vibecode/SaveTwitterTimeline#readme",
   "dependencies": {
     "long": "^3.2.0",
+    "ts-progress": "^0.1.2",
     "twit": "^2.2.5"
   }
 }
