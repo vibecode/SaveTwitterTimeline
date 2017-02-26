@@ -7,7 +7,7 @@ Navigate to the project root.
 
 Run ```npm install```
 
-Fill in the corresponding authConfig fields with your twitter app tokens in the saveTimeline.js file:
+Fill in the corresponding authConfig fields with your twitter app tokens in the index.js file:
 
 ```
 const authConfig = {
@@ -29,4 +29,4 @@ const initialParams = {
 };
 ```
 
-Run ```node saveTimeline```. Tweets will be saved into the 'tweets' folder.
+Run ```node index```. Tweets will be saved into the 'tweets' folder.

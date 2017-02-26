@@ -26,7 +26,7 @@ const getTimeline = (params, cb, acc = []) => {
 
     acc = [...acc, ...data];
 
-    if (data.length > 0) {
+    if (data.length) {
       const maxId = data[data.length - 1].id_str;
       const maxIdInt = new Long.fromString(maxId);
       const shift = maxIdInt.subtract(1).toString();
